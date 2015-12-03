@@ -270,7 +270,6 @@ define([
         entity.entityCollection = this;
         entities.set(id, entity);
 
-        var removedEntities = this._removedEntities;
         if (!this._removedEntities.remove(id)) {
             this._addedEntities.set(id, entity);
         }

@@ -27,6 +27,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to Cesiu
    * [Sean Lilley](https://github.com/lilleyse)
    * [Katherina Lim](https://github.com/klim705)
    * [Gabrielle Getz](https://github.com/ggetz)
+   * [Sarah Chow](https://github.com/slchow)
+   * [Brendan Flood](https://github.com/bflood-agi)
 * [NICTA](http://www.nicta.com.au/)
    * [Chris Cooper](https://github.com/chris-cooper)
    * [Kevin Ring](https://github.com/kring)
@@ -75,5 +77,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to Cesiu
 * [Keat Tang](https://github.com/keattang)
 * [Denver Pierce](https://github.com/denverpierce)
 * [Tucker Tibbetts](https://github.com/cttibbetts)
+* [Eric Putnam](https://github.com/eputnam)
 
 Also see [our contributors page](http://cesiumjs.org/contributors.html) for more information.
