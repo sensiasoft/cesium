@@ -583,16 +583,20 @@ define([
 
                 var corner;
                 if (i === 0) {
-                    corner = new Cartesian3(0.0, 0.0, 1.0);
+                    //corner = new Cartesian3(0.0, 0.0, 1.0);
+                    corner = new Cartesian3(-0.5, -0.5, 1.0);
                 }
                 else if (i === 1) {
-                    corner = new Cartesian3(0.0, 1.0, 1.0);
+                    //corner = new Cartesian3(0.0, 1.0, 1.0);
+                    corner = new Cartesian3(-0.5, 1.5, 1.0);
                 }
                 else if (i === 2) {
-                    corner = new Cartesian3(1.0, 1.0, 1.0);
+                    //corner = new Cartesian3(1.0, 1.0, 1.0);
+                    corner = new Cartesian3(1.5, 1.5, 1.0);
                 }
                 else if (i === 3) {
-                    corner = new Cartesian3(1.0, 0.0, 1.0);
+                    //corner = new Cartesian3(1.0, 0.0, 1.0);
+                    corner = new Cartesian3(1.5, -0.5, 1.0);
                 }
 
                 // transform normalized coordinates to look direction in camera frame
@@ -658,7 +662,7 @@ define([
             var instanceType = geometry.constructor;
             if (defined(instanceType) && defined(instanceType.createShadowVolume)) {
                 instance = new GeometryInstance({
-                    geometry : instanceType.createShadowVolume(geometry, computeMinimumHeight, computeMaximumHeight)
+                    geometry : geometry//instanceType.createShadowVolume(geometry, computeMinimumHeight, computeMaximumHeight)
                 });
             }
 

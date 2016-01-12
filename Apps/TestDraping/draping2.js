@@ -68,7 +68,7 @@ require([
             asynchronous : false
         }));
 
-        //setTimeout(animate, 100);
+        setTimeout(animate, 100);
     }
 
     animate();
