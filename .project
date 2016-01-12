@@ -31,7 +31,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1400616658988</id>
+			<id>0</id>
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -40,7 +40,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1400616658995</id>
+			<id>0</id>
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -49,7 +49,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1400616658999</id>
+			<id>0</id>
 			<name></name>
 			<type>6</type>
 			<matcher>
@@ -58,7 +58,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1400616659006</id>
+			<id>0</id>
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -67,7 +67,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1400616659012</id>
+			<id>0</id>
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -76,7 +76,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1336749023862</id>
+			<id>0</id>
 			<name>Source</name>
 			<type>6</type>
 			<matcher>
@@ -85,7 +85,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1334962530964</id>
+			<id>0</id>
 			<name>Specs</name>
 			<type>6</type>
 			<matcher>
@@ -94,7 +94,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1400616508068</id>
+			<id>0</id>
 			<name>Tools</name>
 			<type>9</type>
 			<matcher>
@@ -103,7 +103,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1400616508072</id>
+			<id>0</id>
 			<name>Tools</name>
 			<type>9</type>
 			<matcher>
@@ -112,7 +112,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1360870693679</id>
+			<id>0</id>
 			<name>Apps/Sandcastle</name>
 			<type>6</type>
 			<matcher>
@@ -121,7 +121,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1338843689105</id>
+			<id>0</id>
 			<name>Source/Shaders</name>
 			<type>22</type>
 			<matcher>
@@ -130,7 +130,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1347662523547</id>
+			<id>0</id>
 			<name>Apps/Sandcastle/gallery</name>
 			<type>6</type>
 			<matcher>
