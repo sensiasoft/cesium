@@ -569,7 +569,7 @@ define([
         if (!defined(GroundPrimitive._maxHeight)) {
             var exaggeration = frameState.terrainExaggeration;
             GroundPrimitive._maxHeight = GroundPrimitive._maxTerrainHeight * exaggeration;
-            GroundPrimitive._minHeight = -1000.0;//GroundPrimitive._minTerrainHeight * exaggeration;
+            GroundPrimitive._minHeight = 0.0;//GroundPrimitive._minTerrainHeight * exaggeration;
             GroundPrimitive._minOBBHeight = GroundPrimitive._minOBBTerrainHeight * exaggeration;
         }
 
@@ -640,19 +640,27 @@ define([
                             camProj: Matrix3.toArray(this._camProj),
                             camDistR: this._camDistR,
                             camDistT: this._camDistT
-                        },
-                        //type: 'Color'
+                        }
                     }
                 }),
                 vertexShaderSource: ImageDrapingVS,
                 fragmentShaderSource: ImageDrapingFS
             });
 
+            /*// debug appearance
+            var appearance = new MaterialAppearance({
+                material : new Material({
+                    fabric : {
+                        type: 'Color'
+                    }
+                })
+            });*/
+
             var instance;
             var instanceType = geometry.constructor;
             if (defined(instanceType) && defined(instanceType.createShadowVolume)) {
                 instance = new GeometryInstance({
-                    geometry : geometry//instanceType.createShadowVolume(geometry, computeMinimumHeight, computeMaximumHeight)
+                    geometry : instanceType.createShadowVolume(geometry, computeMinimumHeight, computeMaximumHeight)
                 });
             }
 
