@@ -539,7 +539,7 @@ define([
             }
         }
 
-        if (passes.pick) {
+        /*if (passes.pick) {
             var pickLength = pickCommands.length;
             for (var k = 0; k < pickLength; ++k) {
                 pickCommands[k].modelMatrix = modelMatrix;
@@ -547,7 +547,7 @@ define([
                 pickCommands[k].cull = cull;
                 commandList.push(pickCommands[k]);
             }
-        }
+        }*/
     }
 
     /**
@@ -569,7 +569,7 @@ define([
         if (!defined(GroundPrimitive._maxHeight)) {
             var exaggeration = frameState.terrainExaggeration;
             GroundPrimitive._maxHeight = GroundPrimitive._maxTerrainHeight * exaggeration;
-            GroundPrimitive._minHeight = GroundPrimitive._minTerrainHeight * exaggeration;
+            GroundPrimitive._minHeight = -1000.0;//GroundPrimitive._minTerrainHeight * exaggeration;
             GroundPrimitive._minOBBHeight = GroundPrimitive._minOBBTerrainHeight * exaggeration;
         }
 
@@ -602,19 +602,6 @@ define([
 
                 // transform normalized coordinates to look direction in camera frame
                 Matrix3.multiplyByVector(invCamProj, corner, lookDir);
-
-                /*if (i === 0) {
-                    lookDir = new Cartesian3(-1.0, -1.0, -1.0);
-                }
-                else if (i === 1) {
-                    lookDir = new Cartesian3(-1.0, 1.0, -1.0);
-                }
-                else if (i === 2) {
-                    lookDir = new Cartesian3(1.0, 1.0, -1.0);
-                }
-                else if (i === 3) {
-                    lookDir = new Cartesian3(1.0, -1.0, -1.0);
-                }*/
 
                 // transform look dir to globe frame
                 Matrix3.multiplyByVector(this._camRot, lookDir, lookDir);
