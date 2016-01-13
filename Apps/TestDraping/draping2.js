@@ -16,6 +16,7 @@ require([
 
     viewer.camera.setView({
         destination : Cesium.Cartesian3.fromDegrees(-110.03, 39.27, 20000.0),
+        //destination : Cesium.Cartesian3.fromDegrees(0.0, 0.0, 20000.0),
         orientation: {
             heading : Cesium.Math.toRadians(0),
             pitch : Cesium.Math.toRadians(-90),
@@ -47,14 +48,15 @@ require([
     function animate() {
 
         var camPos = Cesium.Cartesian3.fromDegrees(-110.03 + off, 39.27, 5000.0);
-        var camQuat = Cesium.Transforms.headingPitchRollQuaternion(camPos, 0.0, 0.0, Cesium.Math.toRadians(-170.0));
+        //var camPos = Cesium.Cartesian3.fromDegrees(0.0 + off, 0.0, 5000.0);
+        var camQuat = Cesium.Transforms.headingPitchRollQuaternion(camPos, 0.0, 0.0, Cesium.Math.toRadians(-150.0));
         var camRot = Cesium.Matrix3.fromQuaternion(camQuat);
         //var camRot = Cesium.Matrix4.getRotation(Cesium.Transforms.northEastDownToFixedFrame(camPos), new Cesium.Matrix3());
         var camProj = new Cesium.Matrix3(0.5,  0.0,  0.5,
-                                         0.0,  0.5,  0.5,
+                                         0.0,  1.0,  0.5,
                                          0.0,  0.0,  1.0);
-
-        off += 0.0002;
+        var camDistR = new Cesium.Cartesian3(-2.60e-01, 8.02e-02, 0.0);
+        var camDistT = new Cesium.Cartesian2(-2.42e-04, 2.61e-04);
 
         if (oldPrimitive !== null) {
             viewer.scene.primitives.remove(oldPrimitive);
@@ -65,9 +67,12 @@ require([
             camPos: camPos,
             camRot: camRot,
             camProj: camProj,
+            camDistR: camDistR,
+            camDistT: camDistT,
             asynchronous : false
         }));
 
+        off += 0.0002;
         setTimeout(animate, 100);
     }
 

@@ -148,7 +148,8 @@ define([
         this._camPos = options.camPos;
         this._camRot = defaultValue(options.camRot, new Quaternion());
         this._camProj = defaultValue(options.camProj, new Matrix3());
-        this._camDist = defaultValue(options.camDist, [0,0,0,0,0]);
+        this._camDistR = defaultValue(options.camDistR, [0.0, 0.0, 0.0]);
+        this._camDistT = defaultValue(options.camDistT, [0.0, 0.0]);
 
         this._sp = undefined;
         this._spPick = undefined;
@@ -649,7 +650,9 @@ define([
                             camPosHigh : encCamPos.high,
                             camPosLow : encCamPos.low,
                             camAtt: Matrix3.toArray(Matrix3.transpose(this._camRot, new Matrix3())),
-                            camProj: Matrix3.toArray(this._camProj)
+                            camProj: Matrix3.toArray(this._camProj),
+                            camDistR: this._camDistR,
+                            camDistT: this._camDistT
                         },
                         //type: 'Color'
                     }
