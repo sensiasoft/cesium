@@ -34,38 +34,45 @@ void main()
     // get fragment 3D pos in eye coordinates using depth buffer value at fragment location
     vec4 v_posEC = windowToEye(gl_FragCoord);
     
-    // get vertex pos in video cam reference frame
+    // translate to video cam frame
     vec4 camPosEC = czm_modelViewRelativeToEye * czm_translateRelativeToEye(camPosHigh_1, camPosLow_2);    
     vec4 v_posCam = v_posEC - camPosEC;
     
-    // project to video cam plane
-    //vec4 st = czm_projection*mat4(camAtt_3)*mat4(czm_inverseViewRotation)*v_posCam;
-    //st /= st.w;    
+    // rotate to video cam frame
     vec3 lookRay = camAtt_3*czm_inverseViewRotation3D*v_posCam.xyz;
-    vec3 st = camProj_4 * (lookRay / lookRay.z);
-    st.y = 1.0 - st.y;
     
+    // discard if behind camera
+    if (lookRay.z < 0.1)
+        discard;
+    
+    // undistort
+    float xn = lookRay.x / lookRay.z;
+    float yn = lookRay.y / lookRay.z;
+    float k1 = camDistR_5[0];
+    float k2 = camDistR_5[1];
+    float k3 = camDistR_5[2];
+    float p1 = camDistT_6[0];
+    float p2 = camDistT_6[1];
+    float r2 = xn*xn+yn*yn;
+    float r4 = r2*r2;
+    float r6 = r4*r2;
+    float xd = xn*(1. + k1*r2 + k2*r4 + k3*r6) + 2.*p1*xn*yn + p2*(r2 + 2.*xn*xn);
+    float yd = yn*(1. + k1*r2 + k2*r4 + k3*r6) + 2.*p2*xn*yn + p1*(r2 + 2.*yn*yn);
+    
+    // project with pinhole model
+    vec3 st = camProj_4 * vec3(xd, yd, 1.);
+    st.y = 1.0 - st.y;    
     if (st.x < 0.0 || st.x > 1.0 || st.y < 0.0 || st.y > 1.0)
         discard;
     //st.x = clamp(st.x, 0.0, 1.0);
     //st.y = clamp(st.y, 0.0, 1.0);
-    
-    vec3 normalEC = normalize(v_normalEC);
-#ifdef FACE_FORWARD
-    normalEC = faceforward(normalEC, vec3(0.0, 0.0, 1.0), -normalEC);
-#endif
 
+    // get color from material 
     czm_materialInput materialInput;
-    materialInput.normalEC = normalEC;
     materialInput.positionToEyeEC = positionToEyeEC;
     materialInput.st = vec2(st.x, st.y);
     czm_material material = czm_getMaterial(materialInput);    
-    
-#ifdef FLAT    
     gl_FragColor = vec4(material.diffuse + material.emission, material.alpha);
-#else
-    gl_FragColor = czm_phong(normalize(positionToEyeEC), material);
-#endif
 
     //float depth = pow(v_posEC.z * 0.5 + 0.5, 8.0);
     //gl_FragColor = vec4(depth, depth, depth, 1.0);
