@@ -321,13 +321,15 @@ define([
     };
 
     function computeMaximumHeight(granularity, ellipsoid) {
-        var r = ellipsoid.maximumRadius;
+        /*var r = ellipsoid.maximumRadius;
         var delta = (r / Math.cos(granularity * 0.5)) - r;
-        return GroundPrimitive._maxHeight + delta;
+        return GroundPrimitive._maxHeight + delta;*/
+        return GroundPrimitive._defaultMaxTerrainHeight;
     }
 
     function computeMinimumHeight(granularity, ellipsoid) {
-        return GroundPrimitive._minHeight;
+        //return GroundPrimitive._minHeight;
+        return 0.0;
     }
 
     var colorRenderState = {
@@ -385,7 +387,7 @@ define([
         rectangle.east = maxLon;
         rectangle.west = minLon;
 
-        var obb = OrientedBoundingBox.fromRectangle(rectangle, GroundPrimitive._maxHeight, GroundPrimitive._minOBBHeight, ellipsoid);
+        var obb = OrientedBoundingBox.fromRectangle(rectangle, GroundPrimitive._defaultMaxTerrainHeight, 0.0, ellipsoid);
         primitive._boundingVolumes.push(obb);
 
         if (!frameState.scene3DOnly) {
