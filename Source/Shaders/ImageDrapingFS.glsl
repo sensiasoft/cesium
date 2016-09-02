@@ -27,6 +27,9 @@ vec4 windowToEye(vec4 fragCoord)
 }
 
 
+// Camera model and frames are based on OpenCV conventions:
+// http://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
+// we pass in a normalized intrinsic matrix as uniform so we can compute the normalized texture coordinates directly
 void main()
 {
     vec3 positionToEyeEC = -v_positionEC; 
@@ -64,8 +67,6 @@ void main()
     st.y = 1.0 - st.y;    
     if (st.x < 0.0 || st.x > 1.0 || st.y < 0.0 || st.y > 1.0)
         discard;
-    //st.x = clamp(st.x, 0.0, 1.0);
-    //st.y = clamp(st.y, 0.0, 1.0);
 
     // get color from material 
     czm_materialInput materialInput;

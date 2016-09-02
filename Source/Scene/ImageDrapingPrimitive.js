@@ -590,16 +590,16 @@ define([
                     corner = new Cartesian3(-0.5, -0.5, 1.0);
                 }
                 else if (i === 1) {
-                    //corner = new Cartesian3(0.0, 1.0, 1.0);
-                    corner = new Cartesian3(-0.5, 1.5, 1.0);
+                    //corner = new Cartesian3(1.0, 0.0, 1.0);
+                    corner = new Cartesian3(1.5, -0.5, 1.0);
                 }
                 else if (i === 2) {
                     //corner = new Cartesian3(1.0, 1.0, 1.0);
                     corner = new Cartesian3(1.5, 1.5, 1.0);
                 }
                 else if (i === 3) {
-                    //corner = new Cartesian3(1.0, 0.0, 1.0);
-                    corner = new Cartesian3(1.5, -0.5, 1.0);
+                    //corner = new Cartesian3(0.0, 1.0, 1.0);
+                    corner = new Cartesian3(-0.5, 1.5, 1.0);
                 }
 
                 // transform normalized coordinates to look direction in camera frame
