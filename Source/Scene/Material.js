@@ -722,6 +722,31 @@ define([
                 return;
             }
 
+            if (uniformValue instanceof HTMLCanvasElement) {
+                if (!uniformValue.drawing) {
+                    if (uniformChanged && defined(texture)) {
+                        if (texture !== context.defaultTexture) {
+                            texture.destroy();
+                        }
+                        texture = undefined;
+                    }
+
+                    if (!defined(texture) || texture === context.defaultTexture) {
+                        texture = new Texture({
+                            context : context,
+                            source : uniformValue
+                        });
+                        material._textures[uniformId] = texture;
+                        return;
+                    }
+
+                    texture.copyFrom(uniformValue);
+                } else if (!defined(texture)) {
+                    material._textures[uniformId] = context.defaultTexture;
+                }
+                return;
+            }
+
             if (uniformValue instanceof Texture && uniformValue !== texture) {
                 material._texturePaths[uniformId] = undefined;
                 var tmp = material._textures[uniformId];
