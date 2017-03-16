@@ -1,5 +1,6 @@
 /.metadata
-/Build
+/Build/*
+!/Build/Cesium*/
 /Instrumented
 /Cesium-*.zip
 /cesium-*.tgz
